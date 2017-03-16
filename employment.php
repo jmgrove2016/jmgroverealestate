@@ -35,11 +35,30 @@ label.error {
     position: relative;
     font-size: 9px;
 }
+label#NameMiddleInitial-error {
+   float:right;
+}
    input[type="text"].error
 {
  border-color:#c72121;
 }
-
+.cntpref {
+    background: #efeeee;
+    padding: 10px;
+    width: 94%;
+	display: inline-block;
+	margin-bottom: 15px;
+	text-transform: capitalize;
+}
+.cntpref span {
+    float: left;
+	width: 40%;
+}
+.cntpref label {
+    display: inline-block;
+    margin-left: 5%;
+	
+}
 .allow-dropdown
 {
 width:100%;    
@@ -249,22 +268,6 @@ width:100%;
         }
 		h2.boxheading{font-size: 20px; margin: 0 0 12px; padding: 0;}
 		label.f-label{display: inline-block; font-size: 1em; font-weight: bold; margin-bottom: 5px;}
-		.cntpref {
-    background: #efeeee;
-    padding: 10px;
-    width: 94%;
-    display: inline-block;
-    margin-bottom: 15px;
-    text-transform: capitalize;
-}
-.cntpref span {
-    float: left;
-    width: 40%;
-}
-.cntpref label {
-    display: inline-block;
-    margin-left: 5%;
-}
     </style>
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
@@ -372,6 +375,7 @@ actively hired, to login to view your daily schedule.</strong> </div>
                                             </div>
                                             <div class="col-250 right">
                                                 <label class="f-label">Source:</label>
+                                                <input type="hidden" name="source_text" id="source_text" value="" />
                                                 <select name="source" class="emp-ddl" id="source">
                                                 <option value=''>select</option>
                                                     <?php
@@ -629,7 +633,6 @@ actively hired, to login to view your daily schedule.</strong> </div>
                                                     <option value="TO">Tonga</option>
                                                     <option value="TT">Trinidad &amp; Tobago</option>
                                                     <option value="TN">Tunisia</option>
-
                                                     <option value="TR">Turkey</option>
                                                     <option value="TU">Turkmenistan</option>
                                                     <option value="TC">Turks &amp; Caicos Is</option>
@@ -691,17 +694,14 @@ actively hired, to login to view your daily schedule.</strong> </div>
                                                 </input>
                                             </div>
                                             <div class="clear-float"></div>
-											
 											<div class="cntpref">
 											<span class="cntpref_txt">Contact prefrence</span>
 												<label><input type="checkbox" id="email_contact" name="email_contact"> Email</label>
-												<label><input type="checkbox" id="call_contact" name="call_contact"> calls</label>
-												<label><input type="checkbox" id="text_contact" name="text_contact"> Text</label>
-												<label><input type="checkbox" id="mail_contact" name="mail_contact"> mail</label>
+												<label><input type="checkbox" id="call_contact" name="call_contact" > calls</label>
+												<label><input type="checkbox" id="text_contact" name="text_contact" > Text</label>
+												<label><input type="checkbox" id="mail_contact" name="mail_contact" > mail</label>
 											</div>
-											
-											
-											
+											<div class="clear-float"></div>
                                             <div class="col-250 left">
                                                <label  class="f-label"> Job type:</label>
                                                 <select name="jobtype" id="jobtype" class=emp-ddl>
@@ -796,10 +796,11 @@ actively hired, to login to view your daily schedule.</strong> </div>
                                                 <input type="submit" name="submit" value="Submit" onclick="return formValidation();" style="text-transform: uppercase; padding: 3px 52px; line-height: 32px;">
                                             </div> -->
                                             <div class="clear-float"></div>
-                                            <div class="g-recaptcha" data-sitekey="6LeGzBMUAAAAAN2ph9MEqiwcQAFdiKs-_bWhmgdM"></div>
+                                            <!--<div class="g-recaptcha" data-sitekey="6LeGzBMUAAAAAN2ph9MEqiwcQAFdiKs-_bWhmgdM"></div>-->
+											<div class="g-recaptcha" data-sitekey="6LeMRBATAAAAAJuy-9y7x4XwFhLr25jQ5zVpFjW1"></div>
                                             <div class="clear-float"></div>
                                              <div class="pad-5 btn_sec" style="text-align: center;">
-                                                <input onClick="return emailBlur();" type="submit" name="submit" value="Submit"
+                                                <input onclick="return emailBlur();" type="submit" name="submit" value="Submit"
                                                 style="text-transform: uppercase; padding: 3px 52px; line-height: 32px;" >
                                             </div>
 
@@ -831,7 +832,9 @@ actively hired, to login to view your daily schedule.</strong> </div>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
     <script type="text/javascript" src="jquery.mask.js"></script>
     <script type="text/javascript">
-
+	$.validator.addMethod('filesize', function (value, element, param) {
+			return this.optional(element) || (element.files[0].size <=  1024 * 1024 * param)
+	}, 'File size must be less than {0} MB');
     $("#employees_data_form").validate({
 		  rules: {
 		    fname: "required",
@@ -852,8 +855,16 @@ actively hired, to login to view your daily schedule.</strong> </div>
             reasonforleaving:"required",
             salaryrequirements:"required",
             messagetorecruiter:"required",
-            profilepic: "required",
-            resume:"required",
+            profilepic: {
+				required: true,
+				filesize: 2,
+				extension: "gif|jpg|png|jpeg|GIF|JPG|PNG|JPEG"
+			},
+			resume: {
+				required: true,
+				filesize: 2,
+				extension: "pdf|doc|txt|docx|PDF|DOC|TXT|DOCX|gif|jpg|png|jpeg|GIF|JPG|PNG|JPEG"
+			},
             employed:{required: true},
             crime:{required: true},
             drugtest:{required: true},
@@ -862,9 +873,19 @@ actively hired, to login to view your daily schedule.</strong> </div>
             jobtype:"required"
 
 		  },
+		  messages:{
+            profilepic: {
+				extension: "Please attach file having extension .gif,.jpg,.png,.jpeg. Replace this with extensions we allow."
+			},
+			 resume: {
+				extension: "Please attach file having extension .pdf,.doc,.txt,.gif,.jpg,.png,.jpeg. Replace this with extensions we allow."
+				
+			}
+		  }
+		  /*,
 		  submitHandler: function(form) {
 		    form.submit();
-		  }
+		  }*/
 
 		});
 
@@ -1012,6 +1033,14 @@ actively hired, to login to view your daily schedule.</strong> </div>
                     });
                 }
             });
+ 
+ $("#source").change(function () {
+
+var sourcetext = $("#source option:selected").text();
+
+$("#source_text").val(sourcetext);
+
+ });
 
             $("#position").change(function () {
                 //    var position = $("#position").val();
