@@ -101,7 +101,7 @@
 		{$crime=$_POST['crime'];}
 		else
 		{$worked='no';} */
-	}
+	
 
 	
 
@@ -281,6 +281,6 @@ $message="<style type=text/css><!--
                 $URL="http://www.jmgroveconstruction.com/quote-service-contact-us.php?message=failed";
 		header ("Location: $URL");
 	}
-
+}
 ?>
 

@@ -796,7 +796,8 @@ actively hired, to login to view your daily schedule.</strong> </div>
                                                 <input type="submit" name="submit" value="Submit" onclick="return formValidation();" style="text-transform: uppercase; padding: 3px 52px; line-height: 32px;">
                                             </div> -->
                                             <div class="clear-float"></div>
-                                            <div class="g-recaptcha" data-sitekey="6LeGzBMUAAAAAN2ph9MEqiwcQAFdiKs-_bWhmgdM"></div>
+                                            <!--<div class="g-recaptcha" data-sitekey="6LeGzBMUAAAAAN2ph9MEqiwcQAFdiKs-_bWhmgdM"></div>-->
+											<div class="g-recaptcha" data-sitekey="6LertREUAAAAAPvq-8Tem1dq35qVQK9qEf-9WbfC"></div>
                                             <div class="clear-float"></div>
                                              <div class="pad-5 btn_sec" style="text-align: center;">
                                                 <input onclick="return emailBlur();" type="submit" name="submit" value="Submit"
