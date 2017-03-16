@@ -768,7 +768,7 @@ actively hired, to login to view your daily schedule.</strong> </div>
                                             </div>
                                             <div class="clear-float"></div>
                                             <div class="col-250 left">
-                                                <label class="f-label">Message to Recruiter:</label>
+                                                <label class="f-label">Message to Recruiterss:</label>
                                                 <textarea rows="4" placeholder="" name="messagetorecruiter" id="messagetorecruiter" class="emp-mltxtbox"></textarea>
                                             </div>
                                             <div class="col-250 right">
