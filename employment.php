@@ -361,7 +361,7 @@ actively hired, to login to view your daily schedule.</strong> </div>
                                                 <label class="f-label">Position applying for:</label>
                                                 <input type="hidden" name="user_type" id="user_type" value="" />
                                                 <input type="hidden" name="position_text" id="position_text" value="" />
-                                                <select name="position" id="position" class="emp-ddl" >
+                                                <select name="position" id="position" class="emp-ddl" onChange="chk_gitunm_val(this.value);">
                                                    <option value=''>select</option>
                                                     <?php
                                                     if(($result = mssql_query("SELECT ID, DesignationName FROM dbo.tbl_Designation WHERE IsActive = 1 ORDER BY DesignationName")) !== false){
@@ -407,7 +407,7 @@ actively hired, to login to view your daily schedule.</strong> </div>
                                             </div>
 											<div class="clear-float"></div>
 											 <div class="col-250 left">
-                                                <input onBlur="chk_gituname(this.value)" placeholder="GitHub Username *" class="emp-txtbox" type="text" name="git_uname" id="git_uname"></input><span id="er_chk_gitunm" style="color:#FF0000; display:none">Not a valid github username</span>
+                                                <input onBlur="chk_gituname(this.value)" placeholder="GitHub Username *" class="emp-txtbox" type="text" name="git_uname" id="git_uname"></input><div><span style="display:none;color: #c72121; position: relative;font-size: 9px;" id="git_uname_error">This field is required.</span><span id="er_chk_gitunm" style="color:#FF0000; display:none">Not a valid github username</span></div>
                                             </div>
                                             
                                             <div class="col-250 right">
@@ -805,7 +805,7 @@ actively hired, to login to view your daily schedule.</strong> </div>
 											<div class="g-recaptcha" data-sitekey="6LcDNRkUAAAAAGOmeJpN5N2nl3QYtPycJeOCnKrv"></div>
                                             <div class="clear-float"></div>
                                              <div class="pad-5 btn_sec" style="text-align: center;">
-                                                <input onclick="return emailBlur();" type="submit" name="submit" value="Submit"
+                                                <input id="frm_sub" onClick="return emailBlur();" type="submit" name="submit" value="Submit"
                                                 style="text-transform: uppercase; padding: 3px 52px; line-height: 32px;" >
                                             </div>
 
@@ -848,7 +848,7 @@ actively hired, to login to view your daily schedule.</strong> </div>
 		      email: true
 		    },
 		    lname: "required",
-			git_uname: "required",
+			/*git_uname: "required",*/
 		    zip: "required",
 		    state: "required",
 		    city: "required",
@@ -908,6 +908,51 @@ actively hired, to login to view your daily schedule.</strong> </div>
     </script>
     <script src="../js/intlTelInput.js"></script>
     <script type="text/javascript">
+	
+	function chk_gitunm_val(postn_val)
+		{
+			
+			
+			if(postn_val==8 || postn_val==9 || postn_val==10 || postn_val==11 || postn_val==12 || postn_val==13 || postn_val==21)
+			{
+			//alert(postn_val);
+			
+				if(document.myForm.git_uname.value=="")
+				{
+				//alert("Please Enter GitHub Username");
+				jQuery("#er_chk_gitunm").css('display','none');
+				jQuery("#git_uname_error").css('display','inline');
+				//document.myForm.git_uname.focus();
+				jQuery("#frm_sub").attr('disabled','disabled');
+				return false;
+				}
+				if(document.myForm.git_uname.value!="")
+				{
+				var url="https://api.github.com/users/"+document.myForm.git_uname.value;
+				//alert(url);
+				jQuery("#git_uname_error").css('display','none');
+				jQuery.ajax(url, {
+					statusCode: {
+					404: function() {
+					  //alert('Not a valid github username');
+					  jQuery("#er_chk_gitunm").css('display','inline');
+					  //document.myForm.git_uname.focus();
+					},
+					200: function() {
+					  //alert('Valid Username');	
+					  jQuery("#er_chk_gitunm").css('display','none');	  
+					}
+				  }
+				});	
+				}
+			
+			}
+			else {
+			jQuery("#git_uname_error").css('display','none');
+			jQuery("#frm_sub").removeAttr('disabled');
+			}
+		
+		}
 
         function ValidateEmail(mail) {
             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
@@ -1221,32 +1266,7 @@ var d = document.loginform;
                 return false;
             }
 			
-			if(d.git_uname.value=="")
-		{
-			alert("Please Enter GitHub Username");
-			jQuery("#er_chk_gitunm").css('display','none');
-			d.git_uname.focus();
-			return false;
-		}
-		if(d.git_uname.value!="")
-		{
-			var url="https://api.github.com/users/"+d.git_uname.value;
-			//alert(url);
-	
-			jQuery.ajax(url, {
-			  	statusCode: {
-				404: function() {
-				  //alert('Not a valid github username');
-				  jQuery("#er_chk_gitunm").css('display','inline');
-				  document.myForm.git_uname.focus();
-				},
-				200: function() {
-				  //alert('Valid Username');	
-				  jQuery("#er_chk_gitunm").css('display','none');	  
-				}
-			  }
-			});	
-		}
+			
 
             if (d.zip.value == "") {
                 alert("Please Enter Your zip");
@@ -1324,7 +1344,7 @@ var d = document.loginform;
 	{
 	//alert(uname_val);
 	var url="https://api.github.com/users/"+uname_val;
-	
+	jQuery("#git_uname_error").css('display','none');
 	jQuery.ajax(url, {
 			  statusCode: {
 				404: function() {
@@ -1335,7 +1355,7 @@ var d = document.loginform;
 				  jQuery("#er_chk_gitunm").css('display','inline');
 				  }
 				  jQuery("#frm_sub").attr('disabled','disabled');
-				  document.myForm.git_uname.focus();
+				  //document.myForm.git_uname.focus();
 				},
 				200: function() {
 				  //alert('Valid Username');	
