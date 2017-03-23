@@ -9,7 +9,8 @@
 	//$connectionInfo = array( "Database"=>"JGBS", "UID"=>"liveuser", "PWD"=>"JGLive@538%");
 	//$conn = sqlsrv_connect( $serverName, $connectionInfo);
 	$conn = mssql_connect($serverName, 'liveuser', 'JGLive@538%');
-	mssql_select_db("JGBS",$conn);
+	/*mssql_select_db("JGBS",$conn);*/
+	mssql_select_db("JGRE",$conn);
 	if( $conn === false ) {	die( print_r( mssql_error(), true)); }
 	// error_reporting(E_ALL);
 	// ini_set("display_errors", 1);
