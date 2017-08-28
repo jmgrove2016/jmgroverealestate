@@ -722,7 +722,7 @@ if ( ! function_exists( 'avada_header_1' ) ) {
 
                     <div id="logo-center">
                         
-                        <div class="jg-wrapper"><img src="http://localhost/jmgroverealestate/wp-content/uploads/2016/04/jg.png"></div>
+                        <div class="jg-wrapper"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/04/jg.png"></div>
 
 <!--
                     	<div class="car-wrapper"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/02/car.jpg" width="100%" /></div>
@@ -754,7 +754,7 @@ if ( ! function_exists( 'avada_header_1' ) ) {
 
 
                     	<div class="leeft">
-                            <a href="#"><img src="http://localhost/jmgroverealestate/wp-content/uploads/2016/04/above-address.png"></a>
+                            <a href="#"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/04/above-address.png"></a>
 
 <!--                        	<img src="<?php echo home_url(); ?>http://localhost/jmgroverealestate/wp-content/uploads/2016/02/above-address.png" />--><br />
 
@@ -766,7 +766,7 @@ if ( ! function_exists( 'avada_header_1' ) ) {
                             <div class="header-top-section">
                                 <ul>
                                     <li><a href="#">Buy</a></li>
-                                    <li><a href="http://localhost/jmgroverealestate/for-sale/">Sell</a></li>
+                                    <li><a href="#">Sell</a></li>
                                 </ul>
                                 <div class="save-button"><a  href="#">Saved Home</a></div>
                                 
@@ -894,7 +894,7 @@ if ( ! function_exists( 'avada_header_2' ) ) {
 
                     <div id="logo-center">
                         
-                        <div class="jg-wrapper"><img src="http://localhost/jmgroverealestate/wp-content/uploads/2016/04/jg.png"></div>
+                        <div class="jg-wrapper"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/04/jg.png"></div>
 
 <!--
                     	<div class="car-wrapper"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/02/car.jpg" width="100%" /></div>
