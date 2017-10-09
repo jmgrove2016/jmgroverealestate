@@ -722,7 +722,7 @@ if ( ! function_exists( 'avada_header_1' ) ) {
 
                     <div id="logo-center">
                         
-                        <div class="jg-wrapper"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/04/jg.png"></div>
+                        <div class="jg-wrapper"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/04/jg.png" title="realtor, real estate, homes for sale" alt="realtor, real estate, homes for sale"></div>
 
 <!--
                     	<div class="car-wrapper"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/02/car.jpg" width="100%" /></div>
@@ -754,7 +754,7 @@ if ( ! function_exists( 'avada_header_1' ) ) {
 
 
                     	<div class="leeft">
-                            <a href="#"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/04/above-address.png"></a>
+                            <a href="#" title="realtor, real estate, homes for sale"><img src="<?php echo home_url(); ?>/wp-content/uploads/2016/04/above-address.png" title="realtor, real estate, homes for sale" alt="realtor, real estate, homes for sale"></a>
 
 <!--                        	<img src="<?php echo home_url(); ?>http://localhost/jmgroverealestate/wp-content/uploads/2016/02/above-address.png" />--><br />
 
@@ -765,17 +765,17 @@ if ( ! function_exists( 'avada_header_1' ) ) {
                         <div class="riight">
                             <div class="header-top-section">
                                 <ul>
-                                    <li><a href="#">Buy</a></li>
-                                    <li><a href="#">Sell</a></li>
+                                    <li><a href="http://www.jmgroverealestate.com/for-sale/" title="realtor, real estate, homes for sale">Buy</a></li>
+                                    <li><a href="http://www.jmgroverealestate.com/for-sale/" title="realtor, real estate, homes for sale">Sell</a></li>
                                 </ul>
-                                <div class="save-button"><a  href="#">Saved Home</a></div>
+                                <div class="save-button"><a  href="http://www.jmgroverealestate.com/for-sale/" title="realtor, real estate, homes for sale">Saved Home</a></div>
                                 
                             </div>
                             <div class="header-bottom-section">
                                 <ul>
-                                    <li><a href="#">Contact us</a></li>
+                                    <li><a href="http://www.jmgroverealestate.com/for-sale/" title="realtor, real estate, homes for sale">Contact us</a></li>
                                 </ul>
-                                <div class="sign-in"><a  href="#">Sign in</a></div>
+                                <div class="sign-in"><a  href="http://www.jmgroverealestate.com/for-sale/" title="realtor, real estate, homes for sale">Sign in</a></div>
                             </div>
 
 <!--
@@ -1187,7 +1187,7 @@ if ( ! function_exists( 'avada_logo' ) ) {
 
 
 
-				<a class="fusion-logo-link" href="<?php echo home_url(); ?>">
+				<a class="fusion-logo-link" href="<?php echo home_url(); ?>" title="realtor, real estate, homes for sale">
 
 
 
@@ -1231,7 +1231,7 @@ if ( ! function_exists( 'avada_logo' ) ) {
 
 
 
-					<img src="<?php echo $logo_url; ?>" width="<?php echo $logo_size['width']; ?>" height="<?php echo $logo_size['height']; ?>" alt="<?php bloginfo( 'name' ); ?>" class="fusion-logo-1x fusion-standard-logo" />
+					<img src="<?php echo $logo_url; ?>" width="<?php echo $logo_size['width']; ?>" height="<?php echo $logo_size['height']; ?>" alt="realtor, real estate, homes for sale" title="realtor, real estate, homes for sale" class="fusion-logo-1x fusion-standard-logo" />
 
 
 

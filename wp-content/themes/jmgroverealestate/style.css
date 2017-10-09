@@ -14438,6 +14438,7 @@ ul.search-filter  li:last-child{
     background:url("assets/images/top.png") top center no-repeat, url("assets/images/left.png") left no-repeat, url("assets/images/bottom.png") bottom center no-repeat, #27447e  url("assets/images/right.png") right no-repeat;
     position: absolute;
     padding: 20px;
+z-index:999
 }
 
 #form .search-section .search{
